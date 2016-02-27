@@ -1,1 +1,5 @@
-%canvas#my_canvas{ height: 400, width: 960 }
+%canvas{ height: 400, width: 960 }
+
+= simple_form_for @picture do |f|
+  = f.input :data_url, as: :hidden
+  = f.button :submit

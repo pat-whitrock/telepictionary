@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.3.0'
 
 gem 'rails', '4.2.5.1'
 gem 'pg', '~> 0.18.4'
@@ -11,11 +12,14 @@ gem 'simple_form'
 gem 'uglifier'
 
 group :development, :test do
+  gem 'pry-rails'
+end
+
+group :test do
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'database_cleaner'
   gem 'fuubar'
   gem 'guard-zeus'
-  gem 'pry-rails'
   gem 'rspec-rails'
 end

@@ -11,6 +11,10 @@ gem 'simple_form'
 gem 'uglifier'
 
 group :development, :test do
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'database_cleaner'
+  gem 'fuubar'
   gem 'guard-zeus'
   gem 'pry-rails'
   gem 'rspec-rails'

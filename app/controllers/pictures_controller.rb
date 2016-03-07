@@ -13,11 +13,13 @@ class PicturesController < ApplicationController
     @picture = Picture.new
   end
 
-  def show; end
+  def show
+    @picture = Picture.find(params[:id])
+  end
 
   private
 
   def picture_params
-    params.require(:picture).permit()
+    params.require(:picture).permit(:data_url)
   end
 end

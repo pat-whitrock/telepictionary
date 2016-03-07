@@ -56,6 +56,13 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
+  # Use fixtures
+  RSpec.configure do |config|
+    config.fixture_path = "#{::Rails.root}/spec/fixtures"
+    config.global_fixtures = :all
+    config.use_transactional_fixtures = false
+  end
+
   # DatabaseCleaner
   config.before(:suite) do |example|
     DatabaseCleaner.strategy = :transaction
@@ -70,4 +77,12 @@ RSpec.configure do |config|
 
   # Capybara driver
   Capybara.default_driver = :webkit
+
+  # Shoulda matchers
+  Shoulda::Matchers.configure do |config|
+    config.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
+    end
+  end
 end

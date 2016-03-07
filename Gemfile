@@ -22,4 +22,5 @@ group :test do
   gem 'fuubar'
   gem 'guard-zeus'
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
 end

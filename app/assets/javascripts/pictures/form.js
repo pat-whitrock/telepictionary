@@ -8,7 +8,7 @@ $(function() {
   }
 
   function setPictureDataURL(dataURL) {
-    return $(this).find('input#picture_data_url').val(dataURL);
+    $('input#picture_data_url').val(dataURL);
   }
 
   $('form').submit(function(e) {

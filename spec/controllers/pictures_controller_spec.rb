@@ -1,28 +1,24 @@
 RSpec.describe PicturesController, type: :controller do
   describe '#create' do
-    before { post :create, {} }
-
     it 'assigns @picture' do
+      post :create, { picture: { data_url: '' } }
+
       expect(assigns(:picture)).to be_a Picture
     end
 
     context 'for a valid picture' do
       it 'redirects to the picture' do
-        expect(response).to redirect_to(assigns(:picture))
-      end
+        post :create, { picture: { data_url: 'blah' } }
 
-      it 'returns a :created status code' do
-        expect(response).to have_http_status :created
+        expect(response).to redirect_to(assigns(:picture))
       end
     end
 
     context 'for an invalid picture' do
       it 'renders :new' do
-        expect(response).to render_template(:new)
-      end
+        post :create, { picture: { data_url: '' } }
 
-      it 'returns a :redirect status code' do
-        expect(response).to have_http_status :redirect
+        expect(response).to render_template :new
       end
     end
   end
@@ -35,11 +31,17 @@ RSpec.describe PicturesController, type: :controller do
     end
 
     it 'renders :new' do
-      expect(response).to render_template(:new)
+      expect(response).to render_template :new
     end
+  end
 
-    it 'returns an :ok status code' do
-      expect(response).to have_http_status :ok
+  describe '#show' do
+    let(:picture) { pictures(:portrait) }
+
+    it 'assigns @picture' do
+      get :show, id: picture.id
+
+      expect(assigns(:picture)).to eq picture
     end
   end
 end
